@@ -87,12 +87,26 @@ WSGI_APPLICATION = 'trinity_clg.wsgi.application'
 
 
 
-import dj_database_url
+# import dj_database_url
+
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600)
+# }
+
+
+
+import os
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_HOST'),
+        'PORT': os.environ.get('MYSQL_PORT', '3306'),
+    }
 }
-
 
 
 
@@ -100,7 +114,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'railway',                  # DB name
+#         'NAME': '',                  # DB name
 #         'USER': 'root',         # copy from Railway Variables
 #         'PASSWORD': 'FhjvjTcgKgCQqqsXOmVgQAQFSsYHhqto', # copy from Railway Variables
 #         'HOST': 'caboose.proxy.rlwy.net',         # copy from Railway Variables
