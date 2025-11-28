@@ -81,14 +81,32 @@ WSGI_APPLICATION = 'trinity_clg.wsgi.application'
 #     }
 # }
 
-import dj_database_url
-import os
+
+
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',                  # DB name
+        'USER': 'root',         # copy from Railway Variables
+        'PASSWORD': 'FhjvjTcgKgCQqqsXOmVgQAQFSsYHhqto', # copy from Railway Variables
+        'HOST': 'caboose.proxy.rlwy.net',         # copy from Railway Variables
+        'PORT': '37317',         # copy from Railway Variables
+    }
 }
+
+
+
+
+
+# import dj_database_url
+# import os
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL')
+#     )
+# }
 
 
 # Password validation
