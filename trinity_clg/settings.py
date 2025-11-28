@@ -100,10 +100,10 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE'),
-        'USER': os.environ.get('MYSQL_USER'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
-        'HOST': os.environ.get('MYSQL_HOST'),
+        'NAME': os.environ.get('railway'),
+        'USER': os.environ.get('root'),
+        'PASSWORD': os.environ.get('FhjvjTcgKgCQqqsXOmVgQAQFSsYHhqto'),
+        'HOST': os.environ.get('mysql.railway.internal'),
         'PORT': os.environ.get('MYSQL_PORT', '3306'),
     }
 }
@@ -114,10 +114,10 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': '',                  # DB name
+#         'NAME': 'railway',                  # DB name
 #         'USER': 'root',         # copy from Railway Variables
 #         'PASSWORD': 'FhjvjTcgKgCQqqsXOmVgQAQFSsYHhqto', # copy from Railway Variables
-#         'HOST': 'caboose.proxy.rlwy.net',         # copy from Railway Variables
+#         'HOST': 'mysql.railway.internal',         # copy from Railway Variables
 #         'PORT': '37317',         # copy from Railway Variables
 #     }
 # }
