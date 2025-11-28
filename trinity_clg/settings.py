@@ -21,10 +21,14 @@ TEMPLATES_DIR =BASE_DIR/'templates'
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^ik(s9hwqd8)z2ze0xg!fys_89j#ru*luxxhs7)zxbxi-_b-&7'
+# SECRET_KEY = 'django-insecure-^ik(s9hwqd8)z2ze0xg!fys_89j#ru*luxxhs7)zxbxi-_b-&7'
+
+import os
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -83,17 +87,32 @@ WSGI_APPLICATION = 'trinity_clg.wsgi.application'
 
 
 
+import os
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',                  # DB name
-        'USER': 'root',         # copy from Railway Variables
-        'PASSWORD': 'FhjvjTcgKgCQqqsXOmVgQAQFSsYHhqto', # copy from Railway Variables
-        'HOST': 'caboose.proxy.rlwy.net',         # copy from Railway Variables
-        'PORT': '37317',         # copy from Railway Variables
+        'NAME': os.environ.get('MYSQLDATABASE'),
+        'USER': os.environ.get('MYSQLUSER'),
+        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+        'HOST': os.environ.get('MYSQLHOST'),
+        'PORT': os.environ.get('MYSQLPORT'),
     }
 }
+
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'railway',                  # DB name
+#         'USER': 'root',         # copy from Railway Variables
+#         'PASSWORD': 'FhjvjTcgKgCQqqsXOmVgQAQFSsYHhqto', # copy from Railway Variables
+#         'HOST': 'caboose.proxy.rlwy.net',         # copy from Railway Variables
+#         'PORT': '37317',         # copy from Railway Variables
+#     }
+# }
 
 
 
@@ -144,6 +163,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
