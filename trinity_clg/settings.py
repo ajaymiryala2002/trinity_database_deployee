@@ -100,13 +100,14 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('railway'),
-        'USER': os.environ.get('root'),
-        'PASSWORD': os.environ.get('FhjvjTcgKgCQqqsXOmVgQAQFSsYHhqto'),
-        'HOST': os.environ.get('mysql.railway.internal'),
-        'PORT': os.environ.get('MYSQL_PORT', '3306'),
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQLUSER'),
+        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+        'HOST': os.environ.get('MYSQLHOST'),
+        'PORT': os.environ.get('MYSQLPORT', '3306'),
     }
 }
+
 
 
 
