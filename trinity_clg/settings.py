@@ -87,18 +87,12 @@ WSGI_APPLICATION = 'trinity_clg.wsgi.application'
 
 
 
-import os
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQLDATABASE'),
-        'USER': os.environ.get('MYSQLUSER'),
-        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
-        'HOST': os.environ.get('MYSQLHOST'),
-        'PORT': os.environ.get('MYSQLPORT'),
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
+
 
 
 
