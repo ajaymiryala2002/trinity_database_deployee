@@ -110,16 +110,31 @@ WSGI_APPLICATION = 'trinity_clg.wsgi.application'
 
 import os
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "college_database",
-        "USER": "root",
-        "PASSWORD": "Ajay@2002",
-        "HOST": "LOCALHOST",
-        "PORT": "3308",
+if os.environ.get("RENDER"):
+    # Production (Render + Railway MySQL)
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MYSQLDATABASE"),
+            "USER": os.environ.get("MYSQLUSER"),
+            "PASSWORD": os.environ.get("MYSQLPASSWORD"),
+            "HOST": os.environ.get("MYSQLHOST"),
+            "PORT": os.environ.get("MYSQLPORT", "3306"),
+        }
     }
-}
+else:
+    # Local development
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "college_database",
+            "USER": "root",
+            "PASSWORD": "Ajay@2002",
+            "HOST": "localhost",
+            "PORT": "3308",
+        }
+    }
+
 
 
 
