@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -116,8 +116,8 @@ DATABASES = {
         "NAME": "college_database",
         "USER": "root",
         "PASSWORD": "Ajay@2002",
-        "HOST": "127.0.0.1",
-        "PORT": "37317",
+        "HOST": "LOCALHOST",
+        "PORT": "3308",
     }
 }
 
